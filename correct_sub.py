@@ -29,8 +29,7 @@ if __name__ == '__main__':
         description="Subtitle synchronizer ;)")
     # Adding arguments
     parser.add_argument("-F", "-file_name", help="Name of subtitle", default='')
-    parser.add_argument("-M", "-mode", help="lead or trail", default='lead')
+    parser.add_argument("-M", "-mode", help="lead (subtracting time) or trail (adding time)", default='lead')
     parser.add_argument("-T", "-time", help="trailing or leading Time in second", default='')
     args = parser.parse_args()
-    print [type(i) for i in attrgetter('F', 'M', 'T')(args)]
-    synchronizer(*attrgetter('F', 'M', 'T')(args))
+    synchronizer(*attrgetter('F', 'M')(args), int(args.T)
